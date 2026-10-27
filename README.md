@@ -1,6 +1,6 @@
 # Melon spatial and single-nucleus transcriptomics code
 
-Minimal code-availability package for the manuscript *A new cell domain forming a metabolic envelope for seeds in cucurbits*.
+Code-availability package for the manuscript *A new cell domain forming a metabolic envelope for seeds in cucurbits*.
 
 The repository contains only the core input paths, key parameters and a few essential analysis commands. Figure layout, color definitions, repeated plotting code and large data objects are intentionally omitted.
 
@@ -8,7 +8,7 @@ The repository contains only the core input paths, key parameters and a few esse
 
 The manuscript reports the raw sequencing and spatial-metabolomics data under NCBI BioProject **PRJNA1511485**. Raw FASTQ files, filtered matrices, Seurat objects, annotation tables and vendor reports are not stored in GitHub. See `00_metadata/data_sources.tsv` and `input_requirements.tsv`.
 
-## Minimal contents
+## Contents
 
 - `01_spatial_transcriptomics/`: data source and unresolved Space Ranger inputs.
 - `02_single_nucleus/`: the supplied DNBC4tools command and the minimal Seurat core workflow.
