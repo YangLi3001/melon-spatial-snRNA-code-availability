@@ -1,28 +1,48 @@
-# Melon spatial and single-nucleus transcriptomics code
+# Melon spatial and single-nucleus transcriptomics
 
-Code-availability package for the manuscript *A new cell domain forming a metabolic envelope for seeds in cucurbits*.
+Analysis code for *A new cell domain forming a metabolic envelope for seeds in cucurbits*.
 
-The repository contains only the core input paths, key parameters and a few essential analysis commands. Figure layout, color definitions, repeated plotting code and large data objects are intentionally omitted.
+Software and package versions are listed in [SOFTWARE_VERSIONS.md](SOFTWARE_VERSIONS.md).
 
-## Data source
+## Data Source
 
-The manuscript reports the raw sequencing and spatial-metabolomics data under NCBI BioProject **PRJNA1511485**. Raw FASTQ files, filtered matrices, Seurat objects, annotation tables and vendor reports are not stored in GitHub. See `00_metadata/data_sources.tsv` and `input_requirements.tsv`.
+The sequencing data are deposited under NCBI BioProject **PRJNA1511485**.
 
-## Contents
+## Content
 
-- `01_spatial_transcriptomics/`: data source and unresolved Space Ranger inputs.
-- `02_single_nucleus/`: the supplied DNBC4tools command and the minimal Seurat core workflow.
-- `03_integration/`: integration method and missing Stereoscope inputs.
-- `04_deg_go_augur/`: minimal GO-enrichment command.
-- `05_parenchyma_states/` to `11_validation/`: concise method/data-source notes and unresolved-code records.
-- `00_metadata/`: provenance, software versions, input requirements and missing-code notes.
-
-The package is deliberately not presented as a complete end-to-end reproduction pipeline. Missing commands are recorded rather than reconstructed.
-
-## Local execution
-
-Replace the example paths in the scripts with the corresponding deposited data paths. The snRNA script expects the `MO`, `C`, `P` and `U` filtered count-matrix directories. The DNBC4tools script requires the study-specific `melon_v4` STAR index and `gene.gtf`.
-
-## License
-
-No license has been selected yet. Choose a license before making the repository public.
+```text
+01_spatial_transcriptomics/
+  00_spaceranger_count.sh
+  01_ST_analysis.R
+02_single_nucleus/
+  00_DNBC4tools_mixseq.sh
+  01_snRNA_analysis.R
+  02_DEG_GO_Augur/
+    01_DEG_identification.R
+    02_GO_enrichment.R
+    Augur.R
+  03_reclustering_states/
+    Parenchyma/
+      01_reclustering.R
+      02_hdWGCNA.R
+      MO_monocle.R
+      C_monocle.R
+      P_monocle.R
+      03_prepare_velocity_h5ad.R
+      04_scvelo.py
+      05_CytoTRACE.R
+    OEC/
+      01_reclustering.R
+      02_hdWGCNA.R
+      MO_monocle.R
+      C_monocle.R
+      P_monocle.R
+      03_SCODE.sh
+03_integration/
+  01_stereoscope.sh
+05_cross_species_synteny/
+  01_tomato_celltype_correlation.R
+06_bulk_RNA-seq/
+  01_alignment_quantification.sh
+  02_differential_expression.R
+```
